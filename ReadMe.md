@@ -37,6 +37,7 @@ Include a demo gif or link to a live demo if available.
 2. Upload a logo for an instant preview by clicking on upload icon.
 3. Remove the added logo by clicking on remove(X).
 4. Customize the umbrella design by changing colors.
+5. It is responsive page.
 
 ## Contributing
 
