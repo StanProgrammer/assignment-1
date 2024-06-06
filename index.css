@@ -118,7 +118,6 @@ body {
   justify-content: left;
   background-color: #2db3e5;
   border: none;
-  border-radius: 5px;
   padding: 10px;
   font-size: 16px;
   font-weight: bold;
@@ -129,6 +128,7 @@ body {
   align-items: center;
   text-align: center;
   cursor: default;
+  border-radius: 0;
 }
 
 #logo-upload-button svg {
