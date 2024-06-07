@@ -1,6 +1,41 @@
 /* Import Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500&display=swap");
 
+/* Define CSS Variables for Colors */
+:root {
+  --color-blue: #2db3e5;
+  --color-yellow: #fed144;
+  --color-pink: #da358c;
+  
+  /* add more colors here */
+}
+/* Themes Button Styles */
+#themes-btn {
+  display: flex;
+  gap: 20px;
+}
+
+#themes-btn button {
+  border-radius: 50%;
+  padding: 0.7rem;
+  border: none;
+  cursor: pointer;
+}
+
+#themes-btn > button:nth-child(1) {
+  background-color:var(--color-blue);
+}
+
+#themes-btn > button:nth-child(2) {
+  background-color: var(--color-yellow);
+}
+
+#themes-btn > button:nth-child(3) {
+  background-color: var(--color-pink);
+}
+
+/* repeat here to add new color similar to above.child will be next element number that is 4*/
+
 /* General Styles */
 body {
   font-family: "Arimo", sans-serif;
@@ -51,16 +86,17 @@ body {
 }
 
 #themes-btn > button:nth-child(1) {
-  background-color: #2db3e5;
+  background-color:var(--color-blue);
 }
 
 #themes-btn > button:nth-child(2) {
-  background-color: #fed144;
+  background-color: var(--color-yellow);
 }
 
 #themes-btn > button:nth-child(3) {
-  background-color: #da358c;
+  background-color: var(--color-pink);
 }
+
 
 /* Upload Button Styles */
 .upload-button {
@@ -116,7 +152,7 @@ body {
   display: flex;
   align-items: left;
   justify-content: left;
-  background-color: #2db3e5;
+  background-color: var(--color-blue);
   border: none;
   padding: 10px;
   font-size: 16px;
@@ -136,7 +172,7 @@ body {
   height: 20px;
   width: 20px;
   fill: black;
-  background-color: #2db3e5;
+  background-color: var(--color-blue);
   transition: all 0.3s ease-in-out;
 }
 

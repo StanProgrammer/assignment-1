@@ -1,7 +1,4 @@
 // Get DOM elements
-const blueBtnEl = document.getElementById("blue-btn");
-const yellowBtnEl = document.getElementById("yellow-btn");
-const pinkBtnEl = document.getElementById("pink-btn");
 const umbrellaImageEl = document.getElementById("umbrella-image");
 const loaderContainerEl = document.getElementById("loader-container");
 const logoUploadButtonEl = document.getElementById("logo-upload-button");
@@ -19,6 +16,38 @@ let currentImage = "././assests/blue_umb.png";
 
 // Set initial styles
 uploadLogoEl.style.fill = "white";
+
+// Color configurations
+const colorsConfig = {
+  blue: {
+    button: document.getElementById("blue-btn"),
+    color: "#2db3e5",
+    image: "././assests/blue_umb.png",
+    bgColor: "#c5e0dc",
+  },
+  yellow: {
+    button: document.getElementById("yellow-btn"),
+    color: "#fed144",
+    image: "./assests/yellow_umb.png",
+    bgColor: "#f7e09e",
+  },
+  pink: {
+    button: document.getElementById("pink-btn"),
+    color: "#da358c",
+    image: "././assests/pink_umb.png",
+    bgColor: "#f4c4c4",
+  },
+  
+  
+  // Add new colors here
+  // Example:
+  // green: {
+  //   button: document.getElementById("green-btn"),
+  //   color: "#28a745",
+  //   image: "./assests/green_umb.png",
+  //   bgColor: "#d4edda",
+  // }
+};
 
 // Helper functions
 function showLoader(color) {
@@ -96,43 +125,30 @@ function handleLogoUpload(event) {
   removeLogoEl.style.display = "block";
 }
 
-
+// Change umbrella color and image
+function changeUmbrella(colorConfig) {
+  currentColor = colorConfig.color;
+  logoUploadButtonEl.style.backgroundColor = colorConfig.color;
+  uploadLogoEl.style.backgroundColor = colorConfig.color;
+  document.body.style.backgroundColor = colorConfig.bgColor;
+  if (!isLogoAdded) {
+    umbrellaImageEl.src = colorConfig.image;
+  } else {
+    showLoader(colorConfig.color);
+    setTimeout(() => {
+      hideLoader();
+      umbrellaImageEl.src = colorConfig.image;
+    }, 3000);
+  }
+}
 
 // Event listeners
 logoUploadInputEl.addEventListener("change", handleLogoUpload);
 
-// Blue Umbrella
-blueBtnEl.addEventListener("click", () => {
-  currentColor = "#2db3e5";
-  logoUploadButtonEl.style.backgroundColor = currentColor;
-  uploadLogoEl.style.backgroundColor = currentColor;
-  document.body.style.backgroundColor = "#c5e0dc";
-  if (!isLogoAdded) {
-    umbrellaImageEl.src = "././assests/blue_umb.png";
-  } else {
-    showLoader("#2db3e5");
-    setTimeout(() => {
-      hideLoader();
-      umbrellaImageEl.src = "././assests/blue_umb.png";
-    }, 3000);
-  }
-});
-
-// Yellow Umbrella
-yellowBtnEl.addEventListener("click", () => {
-  currentColor = "#fed144";
-  uploadLogoEl.style.backgroundColor = currentColor;
-  logoUploadButtonEl.style.backgroundColor = currentColor;
-  document.body.style.backgroundColor = "#f7e09e";
-  if (!isLogoAdded) {
-    umbrellaImageEl.src = "./assests/yellow_umb.png";
-  } else {
-    showLoader("#fed144");
-    setTimeout(() => {
-      hideLoader();
-      umbrellaImageEl.src = "./assests/yellow_umb.png";
-    }, 3000);
-  }
+Object.values(colorsConfig).forEach((colorConfig) => {
+  colorConfig.button.addEventListener("click", () => {
+    changeUmbrella(colorConfig);
+  });
 });
 
 removeLogoEl.addEventListener("click", () => {
@@ -146,26 +162,6 @@ removeLogoEl.addEventListener("click", () => {
   logoUploadInputEl.value = "";
 });
 
-
-
-// Pink Umbrella
-pinkBtnEl.addEventListener("click", () => {
-  currentColor = "#da358c";
-  logoUploadButtonEl.style.backgroundColor = currentColor;
-  uploadLogoEl.style.backgroundColor = currentColor;
-  document.body.style.backgroundColor = "#f4c4c4";
-  if (!isLogoAdded) {
-    umbrellaImageEl.src = "./assests/pink_umb.png";
-  } else {
-    showLoader("#da358c");
-    setTimeout(() => {
-      hideLoader();
-      umbrellaImageEl.src = "././assests/pink_umb.png";
-    }, 3000);
-  }
-});
-
 uploadLogoEl.addEventListener("click", () => {
-  console.log(1)
   logoUploadInputEl.click();
 });
